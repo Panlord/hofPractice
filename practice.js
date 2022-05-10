@@ -87,6 +87,21 @@ var sumTotal = function(products) {
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
+  // go through all the desserts and add each unique type to the dessert types
+  var categories = {};
+  _.each(desserts, function(dessertType, dessert, desserts) {
+    if (!categories[dessertType]) {
+      categories[dessertType] = 0;
+    }
+  });
+  //for each type in dessert types, run _.reduce, procc'd if types match
+  _.each(categories, function(dessertType, dessert, categories) {
+    dessertType = _.reduce(desserts, function(dessertType) {
+      if (dessertType === dessert.type) {
+        return 1;
+      }
+    });
+  });
 
 };
 
